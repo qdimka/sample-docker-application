@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.DockerApplication.Web", "Sample.DockerApplication.Web\Sample.DockerApplication.Web.csproj", "{18EE91F0-CD91-423C-BA7C-90DC4A10C5F7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.DockerApplication.Dal", "Sample.DockerApplication.Dal\Sample.DockerApplication.Dal.csproj", "{B4755619-D54F-437E-B974-5D65E751E353}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{18EE91F0-CD91-423C-BA7C-90DC4A10C5F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18EE91F0-CD91-423C-BA7C-90DC4A10C5F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18EE91F0-CD91-423C-BA7C-90DC4A10C5F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18EE91F0-CD91-423C-BA7C-90DC4A10C5F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B4755619-D54F-437E-B974-5D65E751E353}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4755619-D54F-437E-B974-5D65E751E353}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4755619-D54F-437E-B974-5D65E751E353}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4755619-D54F-437E-B974-5D65E751E353}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

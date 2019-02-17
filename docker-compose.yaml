@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  db:
+    image: microsoft/mssql-server-linux:latest
+    container_name: events.db
+    environment: 
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=Very123Str
+    # ports:
+    #   - "1433:1433"
+    expose:
+      - 1433
+  backend:
+    image: sample-app
+    container_name: events.app
+    build:
+      context: ./backend/Sample.DockerApplication
+      dockerfile: ./Sample.DockerApplication.Web/Dockerfile
+    environment:
+      - ConnectionStrings__DefaultConnection=Server=db;Initial Catalog=events;User ID=sa;Password=Very123Str;
+    ports:
+      - "8080:80"
+    depends_on:
+      - db
+    links:
+      - db:db
