@@ -53,6 +53,7 @@ namespace Sample.DockerApplication.Web
             dbContext.Database.Migrate();
 
             app.UseMvc();
+            app.UseCors("*");
         }
     }
 }

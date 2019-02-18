@@ -9,8 +9,6 @@ services:
       - SA_PASSWORD=Very123Str!
     expose:
       - 1433
-    ports:
-      - "1433:1433"
   backend:
     image: sample-app
     container_name: events.app
@@ -21,7 +19,7 @@ services:
       - ConnectionStrings__DefaultConnection=Server=db;Initial Catalog=events;User ID=sa;Password=Very123Str!;
     ports:
       - "8080:80"
-    depends_on:
-      - db
     links:
       - db:db
+    depends_on:
+      - db

@@ -1,0 +1,47 @@
+.cards
+  display: flex
+  flex-wrap: wrap
+  list-style: none
+  margin: 0
+  padding: 0
+
+.cards_item
+  display: flex
+  margin-top: 0
+  padding: 0 1em 2em
+
+.no-flexbox .cards_item
+  float: left
+
+@media screen and (min-width: 42em) and (max-width: 60em)
+  .cards_item
+    width: 50%
+  .no-flexbox .cards_item:nth-child(2n+1)
+    clear: both
+
+@media screen and (min-width: 60em)
+  .cards_item
+    width: 33.3333%
+  .no-flexbox .cards_item:nth-child(3n+1)
+    clear: both
+
+.card
+  display: flex
+  flex-direction: column
+  background-color: #fff
+  border: 0 solid #eee
+  border-radius: 0
+
+.card_image img
+  width: 100%
+  border-top-left-radius: 0
+  border-top-right-radius: 0
+
+.card_content
+  display: flex
+  flex: 1 0 auto
+  flex-direction: column
+  margin-top: 0
+  padding: 1.5em
+  p
+    flex: 1 0 auto
