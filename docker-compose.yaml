@@ -6,11 +6,11 @@ services:
     container_name: events.db
     environment: 
       - ACCEPT_EULA=Y
-      - SA_PASSWORD=Very123Str
-    # ports:
-    #   - "1433:1433"
+      - SA_PASSWORD=Very123Str!
     expose:
       - 1433
+    ports:
+      - "1433:1433"
   backend:
     image: sample-app
     container_name: events.app
@@ -18,7 +18,7 @@ services:
       context: ./backend/Sample.DockerApplication
       dockerfile: ./Sample.DockerApplication.Web/Dockerfile
     environment:
-      - ConnectionStrings__DefaultConnection=Server=db;Initial Catalog=events;User ID=sa;Password=Very123Str;
+      - ConnectionStrings__DefaultConnection=Server=db;Initial Catalog=events;User ID=sa;Password=Very123Str!;
     ports:
       - "8080:80"
     depends_on:

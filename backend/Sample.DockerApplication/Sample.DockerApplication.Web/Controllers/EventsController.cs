@@ -1,14 +1,20 @@
+using System.Linq;
 using Microsoft.AspNetCore.Mvc;
+using Sample.DockerApplication.Dal;
 
 namespace Sample.DockerApplication.Web.Controllers
 {
     [Route("api/[controller]")]
     public class EventsController : Controller
     {
-        [HttpGet]
-        public IActionResult Get()
+        private readonly SampleContext _dbContext;
+
+        public EventsController(SampleContext dbContext)
         {
-            return Ok("events");
+            _dbContext = dbContext;
         }
+        
+        [HttpGet]
+        public IActionResult Get() => Ok(_dbContext.Events.ToList());
     }
 }
