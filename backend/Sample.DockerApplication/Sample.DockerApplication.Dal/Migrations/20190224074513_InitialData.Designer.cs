@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Sample.DockerApplication.Dal;
 
 namespace Sample.DockerApplication.Dal.Migrations
 {
     [DbContext(typeof(SampleContext))]
-    partial class SampleContextModelSnapshot : ModelSnapshot
+    [Migration("20190224074513_InitialData")]
+    partial class InitialData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -27,6 +29,8 @@ namespace Sample.DockerApplication.Dal.Migrations
 
                     b.Property<string>("Description");
 
+                    b.Property<long?>("EventProgramId");
+
                     b.Property<string>("ImageLink");
 
                     b.Property<bool>("IsRegistrationOpen");
@@ -37,6 +41,8 @@ namespace Sample.DockerApplication.Dal.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("EventProgramId");
+
                     b.ToTable("Events");
 
                     b.HasData(
@@ -44,28 +50,28 @@ namespace Sample.DockerApplication.Dal.Migrations
                         {
                             Id = 1L,
                             Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris. ",
+                            EventProgramId = 1L,
                             ImageLink = "https://digital.report/wp-content/uploads/2017/04/615124073-1078x516.jpg",
                             IsRegistrationOpen = false,
                             StartDate = new DateTime(2019, 2, 24, 0, 0, 0, 0, DateTimeKind.Local),
                             Title = "Technology Conference"
-                        },
+                        });
+                });
+
+            modelBuilder.Entity("Sample.DockerApplication.Dal.Entities.EventProgram", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.HasKey("Id");
+
+                    b.ToTable("EventPrograms");
+
+                    b.HasData(
                         new
                         {
-                            Id = 2L,
-                            Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris. ",
-                            ImageLink = "https://cdn-images-1.medium.com/max/2600/1*JAJ910fg52ODIRZjHXASBQ.png",
-                            IsRegistrationOpen = false,
-                            StartDate = new DateTime(2019, 3, 18, 0, 0, 0, 0, DateTimeKind.Local),
-                            Title = "Docker meetup"
-                        },
-                        new
-                        {
-                            Id = 3L,
-                            Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris. ",
-                            ImageLink = "https://pics.me.me/rubber-duck-debugging-the-rubber-duck-debugging-method-is-as-18277289.png",
-                            IsRegistrationOpen = false,
-                            StartDate = new DateTime(2019, 3, 8, 0, 0, 0, 0, DateTimeKind.Local),
-                            Title = "Rubber duck debugging"
+                            Id = 1L
                         });
                 });
 
@@ -81,7 +87,7 @@ namespace Sample.DockerApplication.Dal.Migrations
 
                     b.Property<TimeSpan>("EndTime");
 
-                    b.Property<long>("EventId");
+                    b.Property<long?>("EventProgramId");
 
                     b.Property<TimeSpan>("StartTime");
 
@@ -89,7 +95,7 @@ namespace Sample.DockerApplication.Dal.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("EventId");
+                    b.HasIndex("EventProgramId");
 
                     b.ToTable("Presentations");
 
@@ -100,7 +106,7 @@ namespace Sample.DockerApplication.Dal.Migrations
                             Author = "John Smith",
                             Company = "VeryCoolCompany Inc.",
                             EndTime = new TimeSpan(0, 12, 0, 0, 0),
-                            EventId = 1L,
+                            EventProgramId = 1L,
                             StartTime = new TimeSpan(0, 10, 0, 0, 0),
                             Title = "A quick guide to help you understand and create ReactJS apps"
                         },
@@ -110,7 +116,7 @@ namespace Sample.DockerApplication.Dal.Migrations
                             Author = "Robert Johnson",
                             Company = "BigCompany Inc.",
                             EndTime = new TimeSpan(0, 14, 0, 0, 0),
-                            EventId = 1L,
+                            EventProgramId = 1L,
                             StartTime = new TimeSpan(0, 12, 0, 0, 0),
                             Title = "ASP.NET Web Deployment using Visual Studio"
                         },
@@ -118,7 +124,7 @@ namespace Sample.DockerApplication.Dal.Migrations
                         {
                             Id = 3L,
                             EndTime = new TimeSpan(0, 15, 0, 0, 0),
-                            EventId = 1L,
+                            EventProgramId = 1L,
                             StartTime = new TimeSpan(0, 14, 0, 0, 0),
                             Title = "Coffee"
                         },
@@ -128,66 +134,24 @@ namespace Sample.DockerApplication.Dal.Migrations
                             Author = "David Linthicum",
                             Company = "Deloitte Consulting",
                             EndTime = new TimeSpan(0, 17, 0, 0, 0),
-                            EventId = 1L,
+                            EventProgramId = 1L,
                             StartTime = new TimeSpan(0, 15, 0, 0, 0),
                             Title = "Here are 9 effective best practices for using DevOps in the cloud"
-                        },
-                        new
-                        {
-                            Id = 5L,
-                            Author = "John Smith",
-                            Company = "VeryCoolCompany Inc.",
-                            EndTime = new TimeSpan(0, 12, 0, 0, 0),
-                            EventId = 2L,
-                            StartTime = new TimeSpan(0, 10, 0, 0, 0),
-                            Title = "A quick guide to help you understand and create ReactJS apps"
-                        },
-                        new
-                        {
-                            Id = 6L,
-                            Author = "Robert Johnson",
-                            Company = "BigCompany Inc.",
-                            EndTime = new TimeSpan(0, 14, 0, 0, 0),
-                            EventId = 2L,
-                            StartTime = new TimeSpan(0, 12, 0, 0, 0),
-                            Title = "ASP.NET Web Deployment using Visual Studio"
-                        },
-                        new
-                        {
-                            Id = 7L,
-                            EndTime = new TimeSpan(0, 15, 0, 0, 0),
-                            EventId = 2L,
-                            StartTime = new TimeSpan(0, 14, 0, 0, 0),
-                            Title = "Coffee"
-                        },
-                        new
-                        {
-                            Id = 8L,
-                            Author = "David Linthicum",
-                            Company = "Deloitte Consulting",
-                            EndTime = new TimeSpan(0, 17, 0, 0, 0),
-                            EventId = 2L,
-                            StartTime = new TimeSpan(0, 15, 0, 0, 0),
-                            Title = "Here are 9 effective best practices for using DevOps in the cloud"
-                        },
-                        new
-                        {
-                            Id = 9L,
-                            Author = "Pragmatic Programmer",
-                            Company = "Duck Factory",
-                            EndTime = new TimeSpan(0, 15, 0, 0, 0),
-                            EventId = 3L,
-                            StartTime = new TimeSpan(0, 10, 0, 0, 0),
-                            Title = "Rubber duck and debug"
                         });
+                });
+
+            modelBuilder.Entity("Sample.DockerApplication.Dal.Entities.Event", b =>
+                {
+                    b.HasOne("Sample.DockerApplication.Dal.Entities.EventProgram", "EventProgram")
+                        .WithMany()
+                        .HasForeignKey("EventProgramId");
                 });
 
             modelBuilder.Entity("Sample.DockerApplication.Dal.Entities.Presentation", b =>
                 {
-                    b.HasOne("Sample.DockerApplication.Dal.Entities.Event")
+                    b.HasOne("Sample.DockerApplication.Dal.Entities.EventProgram")
                         .WithMany("Presentations")
-                        .HasForeignKey("EventId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("EventProgramId");
                 });
 #pragma warning restore 612, 618
         }

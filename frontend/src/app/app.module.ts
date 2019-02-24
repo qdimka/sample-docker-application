@@ -9,6 +9,7 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import {EventsComponent} from './events/events.component';
+import {EventDetailsComponent} from './events/event-details/event-details.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import {EventsComponent} from './events/events.component';
     NavMenuComponent,
     HomeComponent,
     FetchDataComponent,
-    EventsComponent
+    EventsComponent,
+    EventDetailsComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -24,7 +26,14 @@ import {EventsComponent} from './events/events.component';
     FormsModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'events', component: EventsComponent },
+      {
+        path: 'events',
+        component: EventsComponent,
+      },
+      {
+        path: 'events/:id',
+        component: EventDetailsComponent
+      }
     ])
   ],
   providers: [],

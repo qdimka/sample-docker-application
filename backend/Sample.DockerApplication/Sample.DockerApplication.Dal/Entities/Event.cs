@@ -1,4 +1,7 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Sample.DockerApplication.Dal.Entities
 {
@@ -17,7 +20,7 @@ namespace Sample.DockerApplication.Dal.Entities
         public bool IsRegistrationOpen { get; protected set; }
 
         public void CloseRegistration() => IsRegistrationOpen = false;
-
-        public virtual EventProgram EventProgram { get; set; }
+        
+        public virtual ICollection<Presentation> Presentations { get; set; }
     }
 }

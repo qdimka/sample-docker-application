@@ -10,8 +10,8 @@ using Sample.DockerApplication.Dal;
 namespace Sample.DockerApplication.Dal.Migrations
 {
     [DbContext(typeof(SampleContext))]
-    [Migration("20190218180523_InitialData")]
-    partial class InitialData
+    [Migration("20190224111919_InitialEvents")]
+    partial class InitialEvents
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -49,11 +49,32 @@ namespace Sample.DockerApplication.Dal.Migrations
                         new
                         {
                             Id = 1L,
-                            Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                            Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris. ",
                             EventProgramId = 1L,
+                            ImageLink = "https://digital.report/wp-content/uploads/2017/04/615124073-1078x516.jpg",
                             IsRegistrationOpen = false,
-                            StartDate = new DateTime(2019, 2, 18, 0, 0, 0, 0, DateTimeKind.Local),
+                            StartDate = new DateTime(2019, 2, 24, 0, 0, 0, 0, DateTimeKind.Local),
                             Title = "Technology Conference"
+                        },
+                        new
+                        {
+                            Id = 2L,
+                            Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris. ",
+                            EventProgramId = 2L,
+                            ImageLink = "https://cdn-images-1.medium.com/max/2600/1*JAJ910fg52ODIRZjHXASBQ.png",
+                            IsRegistrationOpen = false,
+                            StartDate = new DateTime(2019, 3, 18, 0, 0, 0, 0, DateTimeKind.Local),
+                            Title = "Docker meetup"
+                        },
+                        new
+                        {
+                            Id = 3L,
+                            Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris. ",
+                            EventProgramId = 3L,
+                            ImageLink = "https://pics.me.me/rubber-duck-debugging-the-rubber-duck-debugging-method-is-as-18277289.png",
+                            IsRegistrationOpen = false,
+                            StartDate = new DateTime(2019, 3, 8, 0, 0, 0, 0, DateTimeKind.Local),
+                            Title = "Rubber duck debugging"
                         });
                 });
 
@@ -71,6 +92,14 @@ namespace Sample.DockerApplication.Dal.Migrations
                         new
                         {
                             Id = 1L
+                        },
+                        new
+                        {
+                            Id = 2L
+                        },
+                        new
+                        {
+                            Id = 3L
                         });
                 });
 
@@ -136,6 +165,54 @@ namespace Sample.DockerApplication.Dal.Migrations
                             EventProgramId = 1L,
                             StartTime = new TimeSpan(0, 15, 0, 0, 0),
                             Title = "Here are 9 effective best practices for using DevOps in the cloud"
+                        },
+                        new
+                        {
+                            Id = 5L,
+                            Author = "John Smith",
+                            Company = "VeryCoolCompany Inc.",
+                            EndTime = new TimeSpan(0, 12, 0, 0, 0),
+                            EventProgramId = 2L,
+                            StartTime = new TimeSpan(0, 10, 0, 0, 0),
+                            Title = "A quick guide to help you understand and create ReactJS apps"
+                        },
+                        new
+                        {
+                            Id = 6L,
+                            Author = "Robert Johnson",
+                            Company = "BigCompany Inc.",
+                            EndTime = new TimeSpan(0, 14, 0, 0, 0),
+                            EventProgramId = 2L,
+                            StartTime = new TimeSpan(0, 12, 0, 0, 0),
+                            Title = "ASP.NET Web Deployment using Visual Studio"
+                        },
+                        new
+                        {
+                            Id = 7L,
+                            EndTime = new TimeSpan(0, 15, 0, 0, 0),
+                            EventProgramId = 2L,
+                            StartTime = new TimeSpan(0, 14, 0, 0, 0),
+                            Title = "Coffee"
+                        },
+                        new
+                        {
+                            Id = 8L,
+                            Author = "David Linthicum",
+                            Company = "Deloitte Consulting",
+                            EndTime = new TimeSpan(0, 17, 0, 0, 0),
+                            EventProgramId = 2L,
+                            StartTime = new TimeSpan(0, 15, 0, 0, 0),
+                            Title = "Here are 9 effective best practices for using DevOps in the cloud"
+                        },
+                        new
+                        {
+                            Id = 9L,
+                            Author = "Pragmatic Programmer",
+                            Company = "Duck Factory",
+                            EndTime = new TimeSpan(0, 15, 0, 0, 0),
+                            EventProgramId = 3L,
+                            StartTime = new TimeSpan(0, 10, 0, 0, 0),
+                            Title = "Rubber duck and debug"
                         });
                 });
 

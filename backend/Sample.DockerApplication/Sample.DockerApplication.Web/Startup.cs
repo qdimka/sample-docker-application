@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -31,6 +33,13 @@ namespace Sample.DockerApplication.Web
             {
                 opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
             });
+
+            services.AddAutoMapper();
+            Mapper.Initialize((c) => 
+                c.AddProfiles(typeof(Startup)
+                    .Assembly
+                    .GetTypes()
+                    .Where(x => typeof(Profile).IsAssignableFrom(x))));
             
             services
                 .AddMvc()
@@ -50,6 +59,7 @@ namespace Sample.DockerApplication.Web
                 app.UseHsts();
             }
             
+            //todo: for example only, don`t use in production
             dbContext.Database.Migrate();
 
             app.UseMvc();

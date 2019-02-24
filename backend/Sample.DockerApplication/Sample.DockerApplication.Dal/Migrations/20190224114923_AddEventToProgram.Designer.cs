@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Sample.DockerApplication.Dal;
 
 namespace Sample.DockerApplication.Dal.Migrations
 {
     [DbContext(typeof(SampleContext))]
-    partial class SampleContextModelSnapshot : ModelSnapshot
+    [Migration("20190224114923_AddEventToProgram")]
+    partial class AddEventToProgram
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

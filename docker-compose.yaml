@@ -1,6 +1,27 @@
 version: '3'
 
 services:
+  proxy:
+    image: events.proxy
+    container_name: events.proxy
+    build: 
+      context: ./proxy/
+      dockerfile: DockerFile
+    links:
+      - backend
+      - frontend
+    ports: 
+      - "80:80"
+  frontend:
+    image: events.frontend
+    container_name: events.frontend
+    build: 
+      context: ./frontend/
+      dockerfile: DockerFile
+    ports: 
+      - "8081:8081"
+    depends_on:
+      - backend
   db:
     image: microsoft/mssql-server-linux:latest
     container_name: events.db
@@ -10,7 +31,7 @@ services:
     expose:
       - 1433
   backend:
-    image: sample-app
+    image: events.app
     container_name: events.app
     build:
       context: ./backend/Sample.DockerApplication
@@ -18,8 +39,9 @@ services:
     environment:
       - ConnectionStrings__DefaultConnection=Server=db;Initial Catalog=events;User ID=sa;Password=Very123Str!;
     ports:
-      - "8080:80"
+      - "8082:8082"
     links:
       - db:db
     depends_on:
       - db
+    

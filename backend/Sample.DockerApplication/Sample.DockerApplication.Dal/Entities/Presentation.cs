@@ -6,6 +6,8 @@ namespace Sample.DockerApplication.Dal.Entities
     {
         public long Id { get; set; }
 
+        public long EventId { get; set; }
+
         public TimeSpan StartTime { get; set; }
 
         public TimeSpan EndTime { get; set; }
