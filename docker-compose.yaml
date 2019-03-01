@@ -31,17 +31,17 @@ services:
     expose:
       - 1433
   backend:
-    image: events.app
-    container_name: events.app
-    build:
-      context: ./backend/Sample.DockerApplication
-      dockerfile: ./Sample.DockerApplication.Web/Dockerfile
-    environment:
-      - ConnectionStrings__DefaultConnection=Server=db;Initial Catalog=events;User ID=sa;Password=Very123Str!;
-    ports:
-      - "8082:8082"
-    links:
-      - db:db
-    depends_on:
-      - db
+      image: events.app
+      container_name: events.app
+      build:
+        context: ./backend/Sample.DockerApplication
+        dockerfile: ./Sample.DockerApplication.Web/Dockerfile
+      environment:
+        - ConnectionStrings__DefaultConnection=Server=db;Initial Catalog=events;User ID=sa;Password=Very123Str!;
+      ports:
+        - "8082:8082"
+      links:
+        - db:db
+      depends_on:
+        - db
     
