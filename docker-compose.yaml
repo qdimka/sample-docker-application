@@ -1,12 +1,15 @@
 version: '3.7'
 
+x-base: &base
+  networks: 
+    - events
+
 services:
 
   proxy:
     image: nginx:latest
     container_name: events.proxy
-    networks: 
-      - events
+    <<: *base
     ports: 
       - "80:80"
     volumes: 
@@ -18,28 +21,27 @@ services:
   frontend:
     image: events.frontend
     container_name: events.frontend
+    <<: *base
     build: 
       context: ./frontend/
       dockerfile: DockerFile
-    networks: 
-      - events
     ports: 
       - "8081:8081"
 
   db:
     image: microsoft/mssql-server-linux:latest
     container_name: events.db
+    <<: *base
     environment: 
       - ACCEPT_EULA=Y
       - SA_PASSWORD=Very123Str!
-    networks: 
-      - events
     expose:
       - 1433
       
   backend:
       image: events.app
       container_name: events.app
+      <<: *base
       build:
         context: ./backend/Sample.DockerApplication/
         dockerfile: ./backend/Dockerfile
@@ -47,8 +49,6 @@ services:
         - ConnectionStrings__DefaultConnection=Server=db;Initial Catalog=events;User ID=sa;Password=Very123Str!;
       ports:
         - "8082:8082"
-      networks: 
-        - events
       depends_on: 
         - frontend
     
